@@ -13,7 +13,7 @@ spring:
     active: dev
   data:
     mongodb:
-      uri: mongodb+srv://charakajayamithe:Skillflow2025@skillflow-cluster.rcj6x6n.mongodb.net/?retryWrites=true&w=majority&appName=skillflow-cluster
+      uri: mongodb+srv://PAF:1234@cluster0.r58p4h3.mongodb.net/
       database: ${MONGODB_DB}
 
   security:
