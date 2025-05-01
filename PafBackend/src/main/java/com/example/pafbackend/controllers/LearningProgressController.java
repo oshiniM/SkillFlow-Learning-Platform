@@ -9,23 +9,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 @RestController
-@RequestMapping("/api/LearningProgresss")
+@RequestMapping("/api/LearningProgresss")      // Base route for all endpoints in this controller
 public class LearningProgressController {
 
     private final LearningProgressRepository LearningProgressRepository;
 
+    // Constructor-based dependency injection for the repository
     @Autowired
     public LearningProgressController(LearningProgressRepository LearningProgressRepository) {
         this.LearningProgressRepository = LearningProgressRepository;
     }
 
+    // GET: Retrieve all learning progress records
     @GetMapping
     public ResponseEntity<List<LearningProgress>> getLearningProgresss() {
         List<LearningProgress> LearningProgresss = LearningProgressRepository.findAll();
         return new ResponseEntity<>(LearningProgresss, HttpStatus.OK);
     }
 
+    // GET: Retrieve learning progress records for a specific user by userId
     @GetMapping("/{userId}")
     public ResponseEntity<List<LearningProgress>> getLearningProgresssByUserId(@PathVariable String userId) {
         List<LearningProgress> LearningProgresss = LearningProgressRepository.findByUserId(userId);
