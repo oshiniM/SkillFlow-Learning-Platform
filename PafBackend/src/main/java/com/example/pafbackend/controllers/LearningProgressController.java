@@ -36,34 +36,42 @@ public class LearningProgressController {
         return new ResponseEntity<>(LearningProgresss, HttpStatus.OK);
     }
 
+    // POST: Create a new learning progress entry
     @PostMapping
     public ResponseEntity<LearningProgress> createLearningProgress(@RequestBody LearningProgress LearningProgress) {
         LearningProgress savedLearningProgress = LearningProgressRepository.save(LearningProgress);
         return new ResponseEntity<>(savedLearningProgress, HttpStatus.CREATED);
     }
 
+    // DELETE: Remove a learning progress entry by its ID
     @DeleteMapping("/{LearningProgressId}")
     public ResponseEntity<Void> deleteLearningProgress(@PathVariable String LearningProgressId) {
         LearningProgressRepository.deleteById(LearningProgressId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    // PUT: Update an existing learning progress entry by its ID
     @PutMapping("/{LearningProgressId}")
     public ResponseEntity<LearningProgress> updateLearningProgress(@PathVariable String LearningProgressId, @RequestBody LearningProgress updatedLearningProgress) {
         Optional<LearningProgress> existingLearningProgressOptional = LearningProgressRepository.findById(LearningProgressId);
+        
         if (existingLearningProgressOptional.isPresent()) {
             LearningProgress existingLearningProgress = existingLearningProgressOptional.get();
-            // Update the existing Learning Progress with the new details
+            
+            // Update fields with new values
             existingLearningProgress.setUserId(updatedLearningProgress.getUserId());
             existingLearningProgress.setRoutines(updatedLearningProgress.getRoutines());
             existingLearningProgress.setPlanName(updatedLearningProgress.getPlanName());
             existingLearningProgress.setDescription(updatedLearningProgress.getDescription());
             existingLearningProgress.setGoal(updatedLearningProgress.getGoal());
 
-            // Save the updated Learning Progress
+            // Save updated entity
             LearningProgress savedLearningProgress = LearningProgressRepository.save(existingLearningProgress);
             return new ResponseEntity<>(savedLearningProgress, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } 
+        else 
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);     // Return 404 if not found
         }
     }
 
