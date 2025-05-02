@@ -25,9 +25,11 @@ public class NotificationController {
     @GetMapping
     public ResponseEntity<List<Notification>> getAllNotifications() {
         List<Notification> notifications = notificationRepository.findAll();
+        // Respond with 200 OK and the list of notifications
         return new ResponseEntity<>(notifications, HttpStatus.OK);
     }
 
+    // POST: Accept a notification object and persist it to the database
     @PostMapping
     public ResponseEntity<Notification> createNotification(@RequestBody Notification notification) {
         Notification savedNotification = notificationRepository.save(notification);
