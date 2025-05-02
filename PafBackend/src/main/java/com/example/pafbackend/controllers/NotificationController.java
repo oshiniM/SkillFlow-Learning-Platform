@@ -32,6 +32,7 @@ public class NotificationController {
     // POST: Accept a notification object and persist it to the database
     @PostMapping
     public ResponseEntity<Notification> createNotification(@RequestBody Notification notification) {
+        // Save the new notification and return it with 201 Created
         Notification savedNotification = notificationRepository.save(notification);
         return new ResponseEntity<>(savedNotification, HttpStatus.CREATED);
     }
