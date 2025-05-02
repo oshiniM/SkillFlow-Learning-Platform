@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/notifications")
+@RequestMapping("/api/notifications")        // Root endpoint for handling all notification-related API calls
 public class NotificationController {
 
     private final NotificationRepository notificationRepository;
 
+    // Inject NotificationRepository using constructor injection for better testability and maintainability
     @Autowired
     public NotificationController(NotificationRepository notificationRepository) {
         this.notificationRepository = notificationRepository;
     }
 
+    // GET: Retrieve and return a list of all notifications in the system
     @GetMapping
     public ResponseEntity<List<Notification>> getAllNotifications() {
         List<Notification> notifications = notificationRepository.findAll();
