@@ -42,17 +42,19 @@ public class UserProfileController {
         return userProfileRepository.findByUserId(userId);
     }
 
-    // Update a UserProfile by ID
+    // PUT: Update an existing UserProfile with new data
     @PutMapping("/{id}")
     public ResponseEntity<UserProfile> updateUserProfile(@PathVariable String id, @RequestBody UserProfile userProfileDetails) {
         return userProfileRepository.findById(id).map(existingUserProfile -> {
+            // Apply updates
             existingUserProfile.setImage(userProfileDetails.getImage());
             existingUserProfile.setBiography(userProfileDetails.getBiography());
             existingUserProfile.setFitnessGoals(userProfileDetails.getFitnessGoals());
             existingUserProfile.setProfileVisibility(userProfileDetails.isProfileVisibility());
+            // Save and return the updated profile
             UserProfile updatedUserProfile = userProfileRepository.save(existingUserProfile);
             return ResponseEntity.ok(updatedUserProfile);
-        }).orElseGet(() -> ResponseEntity.notFound().build());
+        }).orElseGet(() -> ResponseEntity.notFound().build());      // If not found, return 404
     }
 
     // Delete a UserProfile by ID
