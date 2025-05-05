@@ -57,15 +57,15 @@ public class UserProfileController {
         }).orElseGet(() -> ResponseEntity.notFound().build());      // If not found, return 404
     }
 
-    // Delete a UserProfile by ID
+    // DELETE: Remove a user profile from the system using its ID
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserProfile(@PathVariable String id) {
         Optional<UserProfile> userProfile = userProfileRepository.findById(id);
         if (userProfile.isPresent()) {
             userProfileRepository.deleteById(id);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();         // Return 200 OK on successful deletion
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();    // Return 404 if not found
         }
     }
 }
