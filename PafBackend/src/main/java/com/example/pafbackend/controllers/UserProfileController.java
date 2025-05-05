@@ -10,32 +10,33 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/userProfiles")
+@RequestMapping("/api/userProfiles")      // Base route for all UserProfile-related endpoints
 
 public class UserProfileController {
 
     @Autowired
     private UserProfileRepository userProfileRepository;
 
-    // Create a new UserProfile
+    // POST: Create and store a new UserProfile in the database
     @PostMapping
     public UserProfile createUserProfile(@RequestBody UserProfile userProfile) {
         return userProfileRepository.save(userProfile);
     }
 
-    // Retrieve all UserProfiles
+    // GET: Fetch all user profiles stored in the system
     @GetMapping
     public List<UserProfile> getAllUserProfiles() {
         return userProfileRepository.findAll();
     }
 
-    // Retrieve a UserProfile by ID
+    // GET: Retrieve a single UserProfile by its unique ID
     @GetMapping("/{id}")
     public ResponseEntity<UserProfile> getUserProfileById(@PathVariable String id) {
         Optional<UserProfile> userProfile = userProfileRepository.findById(id);
         return userProfile.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // GET: Retrieve a list of user profiles based on userId (foreign key or linked field)
     @GetMapping("/user/{userId}")
     public List<UserProfile> getUserProfileByUserId(@PathVariable String userId) {
         return userProfileRepository.findByUserId(userId);
