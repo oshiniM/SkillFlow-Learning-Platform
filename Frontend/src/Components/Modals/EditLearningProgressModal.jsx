@@ -7,30 +7,30 @@ import LearningProgressService from "../../Services/LearningProgressService";
 const { TextArea } = Input;
 const { Title } = Typography;
 
-// Theme colors from your existing component
+// 🎨 Define consistent theme colors for UI elements
 const themeColors = {
-  primary: "#FF6B35", // Bright and inviting orange
-  secondary: "#FF8F1C", // Softer tangerine for a modern touch
-  accent: "#FF4500", // Fresh red-orange for highlights
-  background: "#FFF5E6", // Light orangeish-white for a clean look
-  surface: "#FFF0D9", // Soft light orange for surfaces
-  cardBg: "#FFFFFF", // White background for cards
-  textPrimary: "#1E3A5F", // Deep navy for readability
-  textSecondary: "#5A7184", // Muted blue-gray for secondary text
-  border: "rgba(0, 0, 0, 0.12)", // Subtle neutral border
-  hover: "#FF5733", // Slightly darker orange for hover effects
-  danger: "#FF4D4F", // Friendly red for warnings
-  success: "#28A745", // Balanced green for success messages
-  gradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F1C 100%)", // Light, engaging orange gradient
+  primary: "#FF6B35",          // Bright and inviting orange
+  secondary: "#FF8F1C",        // Softer tangerine for a modern touch
+  accent: "#FF4500",        // Fresh red-orange for highlights
+  background: "#FFF5E6",      // Light orangeish-white for a clean look
+  surface: "#FFF0D9",        // Soft light orange for surfaces
+  cardBg: "#FFFFFF",         // White background for cards
+  textPrimary: "#1E3A5F",     // Deep navy for readability
+  textSecondary: "#5A7184",   // Muted blue-gray for secondary text
+  border: "rgba(0, 0, 0, 0.12)",     // Subtle neutral border
+  hover: "#FF5733",               // Slightly darker orange for hover effects
+  danger: "#FF4D4F",           // Friendly red for warnings
+  success: "#28A745",          // Balanced green for success messages
+  gradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F1C 100%)",       // Light, engaging orange gradient
 };
 
 const EditLearningProgressModal = () => {
-  const snap = useSnapshot(state);
+  const snap = useSnapshot(state);           // Reactively access global state
   const selectedPlan = snap.selectedLearningProgress;
   const [updateLoading, setUpdateLoading] = useState(false);
   const [form] = Form.useForm();
 
-  // Reset form fields when selected plan changes
+  //Reset form fields when the selected plan changes
   useEffect(() => {
     if (selectedPlan && form) {
       form.setFieldsValue({
@@ -42,10 +42,11 @@ const EditLearningProgressModal = () => {
     }
   }, [selectedPlan, form]);
 
+  // Handle form submission for updating a plan
   const updateLearningProgress = async (values) => {
     try {
       setUpdateLoading(true);
-      // Prepare data for update
+      // Build the updated learning plan body
       const body = { 
         ...values, 
         userId: snap.currentUser?.uid,
@@ -56,13 +57,14 @@ const EditLearningProgressModal = () => {
         totalItems: selectedPlan.totalItems
       };
       
+      // Call backend to update learning progress
       await LearningProgressService.updateLearningProgress(selectedPlan.id, body);
       
       // Update the state without page refresh
       const updatedPlans = await LearningProgressService.getAllLearningProgresss();
       state.LearningProgresss = updatedPlans;
       
-      // Update the selected plan in state with new values
+      // Refresh the state with updated data
       const updatedPlan = updatedPlans.find(plan => plan.id === selectedPlan.id);
       if (updatedPlan) {
         state.selectedLearningProgress = updatedPlan;
