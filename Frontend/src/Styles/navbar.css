@@ -12,7 +12,8 @@
     right: 0;
     left: 0;
     z-index: 1000;
-    color: #c49102;
+    color: #350ec0;
+    background-color: aqua;
 }
 
 nav .left .logo img{

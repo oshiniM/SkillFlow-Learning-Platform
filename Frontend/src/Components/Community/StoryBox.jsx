@@ -7,7 +7,7 @@ const StoryBox = () => {
   const snap = useSnapshot(state);
   return (
     <div>
-      <p>Learning Plan Sharing</p>
+      <p ><b>Learning Plan Sharing</b></p>
       <div class="top_box">
         <div
           onClick={() => {

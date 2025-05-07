@@ -65,6 +65,7 @@ const FriendsSection = () => {
             <List.Item
               actions={[
                 <Button
+                style={{ background: "#8E0FED", color: "white" }}
                   type="primary"
                   danger
                   onClick={() => unfriend(friend.id)}
@@ -74,13 +75,13 @@ const FriendsSection = () => {
               ]}
             >
               <List.Item.Meta
-                style={{ color: "white", fontSize: "16px" }}
+                style={{ color: "black", fontSize: "16px" }}
                 avatar={<Avatar src={friend.image} size={64} />}
                 title={
-                  <span style={{ color: "white" }}>{friend.username}</span>
+                  <span style={{ color: "black" }}>{friend.username}</span>
                 }
                 description={
-                  <span style={{ color: "white" }}>{friend.biography}</span>
+                  <span style={{ color: "black" }}>{friend.biography}</span>
                 }
               />
             </List.Item>

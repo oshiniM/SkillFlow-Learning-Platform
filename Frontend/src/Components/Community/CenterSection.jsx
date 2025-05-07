@@ -32,7 +32,7 @@ const CenterSection = () => {
   return (
     <div className="center" style={{ 
       width: "100%", 
-      maxWidth: "1200px", 
+      maxWidth: "1800px", 
       margin: "0 auto",
       padding: "0 16px"
     }}>

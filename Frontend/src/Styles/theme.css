@@ -1,11 +1,11 @@
 /* theme.css */
 
 :root {
-  --primary-color: #FF6B35;
-  --primary-color-dark: #FF4500;
-  --secondary-color: #FFF0D9;
+  --primary-color: #780CC6;
+  --primary-color-dark: #8E0FED;
+  --secondary-color: #d1e9f8;
   --text-dark: #0f172a;
   --text-light: #64748b;
   --white: #ffffff;
-  --max-width: 1200px;
+  --max-width: 1600px;
 }

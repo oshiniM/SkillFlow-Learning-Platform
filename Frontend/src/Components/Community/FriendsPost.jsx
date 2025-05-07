@@ -44,19 +44,19 @@ const { Text, Title, Paragraph } = Typography;
 
 // Enhanced theme colors for more visual depth
 const themeColors = {
-  primary: "#FF6B35", // Bright and inviting orange
-  secondary: "#FF8F1C", // Softer tangerine for a modern touch
-  accent: "#FF4500", // Fresh red-orange for highlights
-  background: "#FFF5E6", // Light orangeish-white for a clean look
-  surface: "#FFF0D9", // Soft light orange for surfaces
-  cardBg: "#FFFFFF", // White background for cards
-  textPrimary: "#1E3A5F", // Deep navy for readability
-  textSecondary: "#5A7184", // Muted blue-gray for secondary text
-  border: "rgba(0, 0, 0, 0.12)", // Subtle neutral border
-  hover: "#FF5733", // Slightly darker orange for hover effects
-  danger: "#FF4D4F", // Friendly red for warnings
-  success: "#28A745", // Balanced green for success messages
-  gradient: "linear-gradient(135deg, #FF6B35 0%, #FF8F1C 100%)", // Light, engaging orange gradient
+  primary: "#9B59B6", // Rich purple for main branding
+  secondary: "#BA68C8", // Lighter lavender for contrast and softness
+  accent: "#8E44AD", // Deep purple for highlights and calls to action
+  background: "#F3E5F5", // Very light lavender for a clean, soft backdrop
+  surface: "#E1BEE7", // Gentle purple surface color
+  cardBg: "#FFFFFF", // White for card clarity
+  textPrimary: "#2E1A47", // Dark violet for strong readability
+  textSecondary: "#6A5C7A", // Muted purple-gray for secondary text
+  border: "rgba(0, 0, 0, 0.12)", // Neutral border remains unchanged
+  hover: "#7E57C2", // Slightly darker purple for hover effects
+  danger: "#D32F2F", // Keeping red for clear warnings
+  success: "#388E3C", // Keeping green for clarity on success
+  gradient: "linear-gradient(135deg, #9B59B6 0%, #BA68C8 100%)", // Smooth purple gradient
 };
 
 const FriendsPost = ({ post }) => {
