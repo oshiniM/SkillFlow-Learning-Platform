@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs>
+    <!-- Purple-Blue Gradient -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6A0DAD" />
+      <stop offset="100%" stop-color="#1E90FF" />
+    </linearGradient>
+    
+    <!-- Glow Effect -->
+    <filter id="textGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Circle Animation Path -->
+    <path id="circlePath" d="M250,50 A200,200 0 1,1 250,250 A200,200 0 1,1 250,50" fill="none" />
+  </defs>
+  
+  <!-- CIRCLE EFFECTS -->
+  <!-- Main Pulsing Circle -->
+  <circle cx="250" cy="150" r="220" fill="none" stroke="url(#mainGradient)" stroke-width="2" stroke-dasharray="10,5" opacity="0.6">
+    <animate attributeName="r" values="200;220;200" dur="8s" repeatCount="indefinite" />
+    <animate attributeName="stroke-dashoffset" values="0;100;0" dur="10s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Rotating Circles -->
+  <circle cx="250" cy="150" r="180" fill="none" stroke="#6A0DAD" stroke-width="1.5" stroke-dasharray="5,10">
+    <animateTransform attributeName="transform" type="rotate" from="0 250 150" to="360 250 150" dur="20s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- Animated Dots on Circle Path -->
+  <circle r="8" fill="#1E90FF">
+    <animateMotion dur="12s" repeatCount="indefinite">
+      <mpath href="#circlePath" />
+    </animateMotion>
+    <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle r="6" fill="#6A0DAD">
+    <animateMotion dur="8s" repeatCount="indefinite" begin="2s">
+      <mpath href="#circlePath" />
+    </animateMotion>
+    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" />
+  </circle>
+  
+  <!-- FLOATING DOTS (original animation) -->
+  <circle cx="0" cy="150" r="8" fill="#6A0DAD">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,150 Q125,50 250,150 T500,150" />
+    <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="0" cy="150" r="6" fill="#1E90FF">
+    <animateMotion dur="6s" repeatCount="indefinite" path="M0,150 Q125,250 250,150 T500,150" begin="1s" />
+    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" begin="1s" />
+  </circle>
+  
+  <!-- MAIN TEXT -->
+  <text x="250" y="160" font-family="Arial" font-size="60" font-weight="bold" text-anchor="middle" fill="url(#mainGradient)" filter="url(#textGlow)">
+    SkillFlow
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+  </text>
+  
+  <!-- ANIMATED UNDERLINE -->
+  <path d="M150,180 L350,180" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round" fill="none">
+    <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="4s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- ORBITING CIRCLES -->
+  <g transform="translate(250,150)">
+    <circle cx="0" cy="-50" r="12" fill="#6A0DAD" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="0" cy="-80" r="10" fill="#1E90FF" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite" begin="1s" />
+    </circle>
+  </g>
+  
+  <!-- PULSING WAVES -->
+  <path d="M50,220 Q150,200 250,220 T450,220" fill="none" stroke="url(#mainGradient)" stroke-width="2" opacity="0.6">
+    <animate attributeName="d" values="M50,220 Q150,200 250,220 T450,220; M50,220 Q150,240 250,220 T450,220; M50,220 Q150,200 250,220 T450,220" dur="5s" repeatCount="indefinite" />
+  </path>
+</svg>

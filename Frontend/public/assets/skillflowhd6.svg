@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300">
+  <defs>
+    <!-- Purple-Blue Gradient -->
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6A0DAD" />
+      <stop offset="100%" stop-color="#1E90FF" />
+    </linearGradient>
+    
+    <!-- Glow Effect -->
+    <filter id="textGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Animated Path -->
+    <path id="flowPath" d="M50,150 Q150,50 250,150 T450,150" fill="none" />
+  </defs>
+  
+  <!-- Floating Dots Animation -->
+  <circle cx="0" cy="150" r="8" fill="#6A0DAD">
+    <animateMotion dur="8s" repeatCount="indefinite" path="M0,150 Q125,50 250,150 T500,150" />
+    <animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="0" cy="150" r="6" fill="#1E90FF">
+    <animateMotion dur="6s" repeatCount="indefinite" path="M0,150 Q125,250 250,150 T500,150" begin="1s" />
+    <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" begin="1s" />
+  </circle>
+  
+  <!-- Main Text -->
+  <text x="250" y="160" font-family="Arial" font-size="60" font-weight="bold" text-anchor="middle" fill="url(#mainGradient)" filter="url(#textGlow)">
+    SkillFlow
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+  </text>
+  
+  <!-- Animated Underline -->
+  <path d="M150,180 L350,180" stroke="url(#mainGradient)" stroke-width="4" stroke-linecap="round" fill="none">
+    <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="4s" repeatCount="indefinite" />
+  </path>
+  
+  <!-- Orbiting Circles -->
+  <g transform="translate(250,150)">
+    <circle cx="0" cy="-50" r="12" fill="#6A0DAD" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="6s" repeatCount="indefinite" />
+      <animate attributeName="r" values="8;12;8" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <circle cx="0" cy="-80" r="10" fill="#1E90FF" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="8s" repeatCount="indefinite" />
+      <animate attributeName="r" values="6;10;6" dur="3s" repeatCount="indefinite" begin="1s" />
+    </circle>
+    
+    <circle cx="0" cy="-60" r="8" fill="#9D4EDD" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="240" to="600" dur="10s" repeatCount="indefinite" />
+      <animate attributeName="r" values="5;8;5" dur="4s" repeatCount="indefinite" begin="2s" />
+    </circle>
+  </g>
+  
+  <!-- Pulsing Waves -->
+  <path d="M50,220 Q150,200 250,220 T450,220" fill="none" stroke="url(#mainGradient)" stroke-width="2" opacity="0.6">
+    <animate attributeName="d" values="M50,220 Q150,200 250,220 T450,220; M50,220 Q150,240 250,220 T450,220; M50,220 Q150,200 250,220 T450,220" dur="5s" repeatCount="indefinite" />
+  </path>
+  
+  <path d="M50,230 Q150,210 250,230 T450,230" fill="none" stroke="url(#mainGradient)" stroke-width="1" opacity="0.4">
+    <animate attributeName="d" values="M50,230 Q150,210 250,230 T450,230; M50,230 Q150,250 250,230 T450,230; M50,230 Q150,210 250,230 T450,230" dur="6s" repeatCount="indefinite" begin="1s" />
+  </path>
+</svg>
